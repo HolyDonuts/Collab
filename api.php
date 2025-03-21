@@ -29,9 +29,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif (isset($post_vars['name'])) {
         $name = $conn->real_escape_string($post_vars['name']);
-        // Set the new user as active if they are the only user
-        $is_active = $conn->query("SELECT COUNT(*) as count FROM users")->fetch_assoc()['count'] == 0 ? '1' : '0';
-        $sql = "INSERT INTO users (name, is_active) VALUES ('$name', '$is_active') ON DUPLICATE KEY UPDATE is_active='$is_active', last_active=NOW()";
+        // Check if the user already exists
+        $check_user = "SELECT * FROM users WHERE name='$name'";
+        $result = $conn->query($check_user);
+        if ($result->num_rows > 0) {
+            // User exists, update their last active time
+            $sql = "UPDATE users SET last_active=NOW() WHERE name='$name'";
+        } else {
+            // Set the new user as active if they are the only user
+            $is_active = $conn->query("SELECT COUNT(*) as count FROM users")->fetch_assoc()['count'] == 0 ? '1' : '0';
+            $sql = "INSERT INTO users (name, is_active) VALUES ('$name', '$is_active')";
+        }
         if ($conn->query($sql) === TRUE) {
             echo json_encode(["message" => "User added/updated successfully."]);
         } else {

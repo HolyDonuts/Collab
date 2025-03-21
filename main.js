@@ -62,6 +62,13 @@ submitNameButton.addEventListener('click', () => {
     }
 });
 
+// Check if a username exists in the database
+function checkUsernameExists(username) {
+    return fetch(`api.php?username=${username}`)
+        .then(response => response.json())
+        .then(data => data.exists);
+}
+
 // Handle Enter key for name submission
 usernameInput.addEventListener("keydown", (event) => {
     if (event.key === "Enter") {

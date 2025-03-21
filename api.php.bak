@@ -29,7 +29,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     } elseif (isset($post_vars['name'])) {
         $name = $conn->real_escape_string($post_vars['name']);
-        $is_active = isset($post_vars['update_only']) ? '1' : '0';
+        // Set the new user as active if they are the only user
+        $is_active = $conn->query("SELECT COUNT(*) as count FROM users")->fetch_assoc()['count'] == 0 ? '1' : '0';
         $sql = "INSERT INTO users (name, is_active) VALUES ('$name', '$is_active') ON DUPLICATE KEY UPDATE is_active='$is_active', last_active=NOW()";
         if ($conn->query($sql) === TRUE) {
             echo json_encode(["message" => "User added/updated successfully."]);

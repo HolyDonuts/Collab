@@ -118,7 +118,7 @@ window.addEventListener('load', () => {
         checkUsernameExists(storedUsername).then(exists => {
             if (exists) {
                 usernameContainer.style.display = "none";
-                displayNameElement.textContent = `Welcome, ${storedUsername}!`;
+                displayNameElement.textContent = `${storedUsername}`;
                 displayNameElement.style.display = "block";
                 currentUser = storedUsername;
                 updateTurn();
