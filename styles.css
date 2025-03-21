@@ -1,0 +1,269 @@
+/* Use Google Fonts to load the Cinzel font */
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&display=swap');
+
+body {
+    font-family: 'Garamond', serif;
+    background-color: #f4f1e3;
+    color: #3e2a1c;
+    margin: 0;
+    padding: 0;
+	height: auto;
+	background-image: url('parchment-bg.png');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+  background-size: 100% 100%;
+}
+
+#header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.header-bar {
+	text-align: center;
+}
+
+.statsTable {
+	float: right;
+	display: inline-block;
+	margin:12px;
+	
+}
+
+table{
+	th, td {
+		padding:5px 5px;
+	}
+}
+
+#contentWrapper {
+margin-top:85px;   
+   padding: 60px 20px 20px; /* Add padding to avoid content being hidden behind the header */
+}
+
+#statsContainer {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    text-align: right;
+}
+
+#storyContainer {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background: url('OLD_PAPER_TEXTURE.png') repeat-y;
+    border: 2px solid #3e2a1c;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+	position: relative;
+	
+}
+
+.inputContainer {
+    position: relative;
+}
+
+.story-row {
+    //margin-bottom: 15px;
+    padding: 5px;
+    //background: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+	margin:0;
+}
+
+.username-block {
+    font-weight: bold;
+    margin-right: 10px;
+    padding: 3px 7px;
+    border-radius: 3px;
+    display: inline-block;
+    background-color: #d4b483;
+    color: #3e2a1c;
+}
+
+.story-text {
+    display: inline;
+}
+
+.inputContainer {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 20px;
+}
+
+textarea#userInput {
+    width: 97%;
+    padding: 15px;
+    border: 2px solid #3e2a1c;
+    border-radius: 10px;
+    font-family: 'Garamond', serif;
+    font-size: 16px;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: #3e2a1c;
+    height: 200px;
+	resize: vertical;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+    margin-right: 10px;
+}
+
+/* button {
+    font-family: 'Garamond', serif;
+    font-size: 16px;
+    background-color: #d4b483;
+    color: #3e2a1c;
+    border: 2px solid #3e2a1c;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-top: 10px;
+} */
+
+.fantasy-button {
+    font-family: 'Cinzel', serif; /* Use a fantasy-like font */
+    font-size: 14px;
+    color: #fff;
+    background: linear-gradient(145deg, #7a5d43, #5a3f2a);
+    border: 2px solid #3e2a1c;
+    border-radius: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    text-shadow: 1px 1px 3px #000;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.fantasy-button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
+.fantasy-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.fantasy-textarea {
+    font-family: 'Cinzel', serif; /* Use a fantasy-like font */
+    font-size: 14px;
+    color: #3e2a1c;
+    //background: url('parchment-bg.png') no-repeat center center;
+    background-size: cover;
+    border: 2px solid #3e2a1c;
+    border-radius: 10px;
+    height: 45px;
+    resize: none;
+    box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.5);
+    outline: none;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #c9a773;
+}
+
+#randomiseButton {
+    display: none;
+}
+
+#usernameContainer,
+#displayName {
+    text-align: center;
+    margin: 5px 0;
+}
+
+#usernameContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#username {
+    font-family: 'Garamond', serif;
+    font-size: 16px;
+    padding: 10px;
+    margin-right: 10px;
+	
+}
+
+#userCounter,
+#activeUser {
+    font-family: 'Garamond', serif;
+    margin: 10px 0;
+}
+
+#parchment-bg {
+    background: url('parchment-bg.png') repeat-y;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+/* .blur-text {
+    filter: blur(3px);
+}
+
+.unblur-text:hover {
+    filter: none;
+} */
+
+.blurred-text {
+    filter: blur(2px);
+    display: inline-block;
+}
+
+.unblurred-text {
+    display: inline-block;
+}
+
+#purgeButton, #startNewStoryButton, #showFullStoryButton {
+    float: right;
+    margin-left: 5px;
+    position: relative; /* Added to position tooltip correctly */
+}
+
+/* Tooltip text */
+.tooltip {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%; /* Adjust the position as needed */
+    left: 50%;
+    margin-left: -60px; /* Adjust based on tooltip width */
+    opacity: 0; /* Added for smooth transition */
+    transition: opacity 0.3s; /* Added for smooth transition */
+}
+
+/* Show the tooltip text when you mouse over the button */
+#purgeButton:hover .tooltip, 
+#startNewStoryButton:hover .tooltip, 
+#showFullStoryButton:hover .tooltip, 
+#randomiseButton:hover .tooltip,
+#submitNameButton:hover .tooltip,
+#printButton:hover .tooltip {
+    visibility: visible;
+    opacity: 1; /* Added for smooth transition */
+}
+
+

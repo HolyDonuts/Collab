@@ -1,0 +1,23 @@
+const prompts = [
+    "It was a dark and stormy night...",
+    "A long time ago in a faraway galaxy...",
+    "In a small village, deep within the forest...",
+    "Once upon a time, in a land filled with magic...",
+    "The sun had just dipped below the horizon when...",
+    "On a quiet street, in the middle of the night...",
+    "In the heart of the bustling city, there was a secret...",
+    "Deep beneath the ocean waves, an ancient city lay hidden...",
+    "High in the mountains, where the air is thin and crisp...",
+    "At the edge of the universe, where the stars are born..."
+];
+
+function getRandomPrompt() {
+    return prompts[Math.floor(Math.random() * prompts.length)];
+}
+
+function updateCurrentPrompt(newPrompt) {
+    currentPromptElement.textContent = newPrompt;
+    if (!promptLocked) {
+        savePromptToServer(newPrompt);
+    }
+}

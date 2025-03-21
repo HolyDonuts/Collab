@@ -1,0 +1,111 @@
+const currentPromptElement = document.getElementById("currentPrompt");
+const randomiseButton = document.getElementById("randomiseButton");
+const userInput = document.getElementById("userInput");
+const printButton = document.getElementById("printButton");
+const usernameInput = document.getElementById("username");
+const submitNameButton = document.getElementById("submitNameButton");
+const usernameContainer = document.getElementById("usernameContainer");
+const displayNameElement = document.getElementById("displayName");
+const userCounterElement = document.getElementById("userCounter");
+const activeUserElement = document.getElementById("activeUser");
+const purgeButton = document.getElementById("purgeButton");
+const startNewStoryButton = document.getElementById("startNewStoryButton");
+const showFullStoryButton = document.getElementById("showFullStoryButton");
+const storyContainerElement = document.getElementById("storyContainer");
+const storyContentElement = document.getElementById("storyContent");
+
+function updateStoryContent() {
+    if (!storyContainerElement) {
+        console.error("Story content element not found");
+        return;
+    }
+
+    const isUserInputFocused = document.activeElement === userInput;
+
+    storyContentElement.innerHTML = ""; // Clear existing content
+    story.forEach((entry) => {
+        const storyRow = document.createElement("p");
+        storyRow.className = "story-row";
+
+        const usernameBlock = document.createElement("span");
+        usernameBlock.className = "username-block";
+        usernameBlock.style.backgroundColor = getUsernameColor(entry.user);
+        usernameBlock.textContent = entry.user;
+
+        const storyText = document.createElement("span");
+        storyText.className = "story-text";
+
+        if (showFullStory || entry.user === currentUser) {
+            storyText.textContent = entry.text;
+        } else {
+            const sentences = entry.text.split('.').filter(sentence => sentence.trim() !== '');
+            const lastSentence = sentences.pop();
+            const blurredText = sentences.join('.') + '.';
+            const visiblePart = document.createElement("span");
+            visiblePart.className = "unblurred-text";
+            visiblePart.textContent = lastSentence;
+
+            const blurredPart = document.createElement("span");
+            blurredPart.className = "blurred-text";
+            blurredPart.textContent = blurredText;
+
+            storyText.appendChild(blurredPart);
+            storyText.appendChild(visiblePart);
+        }
+
+        storyRow.appendChild(usernameBlock);
+        storyRow.appendChild(storyText);
+        storyContentElement.appendChild(storyRow);
+    });
+
+    // Ensure the user input textarea is always at the bottom
+    storyContainerElement.appendChild(userInput);
+
+    if (isUserInputFocused) {
+        userInput.focus();
+    }
+}
+
+function updateShowFullStoryButton() {
+    if (showFullStory) {
+        showFullStoryButton.innerHTML = '<i class="fas fa-eye-slash"></i>';
+    } else {
+        showFullStoryButton.innerHTML = '<i class="fas fa-eye"></i>';
+    }
+}
+
+function updateUserCount() {
+    userCounterElement.textContent = `${users.length}`;
+    if (users.length > 0) {
+        activeUserElement.textContent = `${users[activeUserIndex].name}`;
+    } else {
+        activeUserElement.textContent = "Current Turn: None";
+    }
+}
+
+function updateUI() {
+    const identifiedUser = users.find(user => user.is_active === '1' || user.is_active === 1);
+    console.log('Identified current active user object for UI update:', identifiedUser);
+    if (identifiedUser && identifiedUser.name === currentUser) {
+        console.log('Enabling input for user:', currentUser);
+        userInput.disabled = false;
+        printButton.disabled = false;
+    } else {
+        console.log('Disabling input for user:', currentUser);
+        userInput.disabled = true;
+        printButton.disabled = true;
+    }
+    // Hide randomise button for non-initial users
+    if (identifiedUser && identifiedUser.name !== currentUser) {
+        randomiseButton.style.display = "none";
+    }
+}
+
+function getUsernameColor(username) {
+    let hash = 0;
+    for (let i = 0; i < username.length; i++) {
+        hash = username.charCodeAt(i) + ((hash << 5) - hash);
+    }
+    const color = `hsl(${hash % 360}, 70%, 70%)`;
+    return color;
+}
