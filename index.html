@@ -6,9 +6,17 @@
     <title>TurnTale</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Eagle+Lake&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div id="header" class="header-bar">
+     <!-- Video Background -->
+    <video autoplay muted loop id="backgroundVideo">
+        <source src="movieBackground.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+	<div id="header" class="header-bar">
         <h1>TurnTale</h1>
         
     </div>
@@ -19,19 +27,23 @@
             <button id="submitNameButton" class="fantasy-button">Submit Name</button>
         </div>
         <div id="storyContainer">
-            <button id="purgeButton" class="fantasy-button"><i class="fas fa-user-times"></i><span class="tooltip">Purge User dB Table</span></button>
-            <button id="startNewStoryButton" class="fantasy-button"><i class="fas fa-book-open"></i><span class="tooltip">New Story</span></button>
-            <button id="showFullStoryButton" class="fantasy-button"><i class="fas fa-eye"></i><span class="tooltip">Show/Hide Full Story</span></button>
-            <div id="storyPrompts">
+		
+			<div id="storyPrompts">
                 <p id="currentPrompt" class="story-head">It was a dark and stormy night...</p>
                 <button id="randomiseButton" class="fantasy-button"><i class="fa-solid fa-shuffle"></i><span class="tooltip">Randomise Starting Prompt</span></button>
             </div>
             <div id="storyContent"></div> <!-- Container for the story content -->
             <div class="inputContainer">
-                <textarea id="userInput" placeholder="Add up to 200 words..." maxlength="1200" disabled class="fantasy-textarea"></textarea>
+                <textarea id="userInput" placeholder="Press Enter to submit..." maxlength="1200" disabled class="fantasy-textarea"></textarea>
             </div>
-            <button id="printButton" disabled class="fantasy-button"><i class="fa-solid fa-pen-nib"></i><span class="tooltip">Submit</span></button>
-        </div>
+            <button id="printButton" disabled class="fantasy-button hide"><i class="fa-solid fa-pen-nib"></i><span class="tooltip">Submit</span></button>
+        
+		</div>
+		<div class="buttonContainer">
+            <button id="purgeButton" class="fantasy-button"><i class="fas fa-user-times"></i><span class="tooltip">Purge User dB Table</span></button>
+            <button id="startNewStoryButton" class="fantasy-button"><i class="fas fa-book-open"></i><span class="tooltip">New Story</span></button>
+            <button id="showFullStoryButton" class="fantasy-button"><i class="fas fa-eye"></i><span class="tooltip">Show/Hide Full Story</span></button>
+            </div>
     </div>
 	<div class="statsTable">
             <table border="1">

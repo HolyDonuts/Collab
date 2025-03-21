@@ -27,10 +27,10 @@ function updateStoryContent() {
         const storyRow = document.createElement("p");
         storyRow.className = "story-row";
 
-        const usernameBlock = document.createElement("span");
+        /* const usernameBlock = document.createElement("span");
         usernameBlock.className = "username-block";
         usernameBlock.style.backgroundColor = getUsernameColor(entry.user);
-        usernameBlock.textContent = entry.user;
+        usernameBlock.textContent = entry.user; */
 
         const storyText = document.createElement("span");
         storyText.className = "story-text";
@@ -53,7 +53,7 @@ function updateStoryContent() {
             storyText.appendChild(visiblePart);
         }
 
-        storyRow.appendChild(usernameBlock);
+        //storyRow.appendChild(usernameBlock);
         storyRow.appendChild(storyText);
         storyContentElement.appendChild(storyRow);
     });

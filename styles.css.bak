@@ -8,8 +8,9 @@
     --color-accent1: #06062A;
     --color-accent2: #142588;
     --color-background: #ffffff; /* White */
-    --color-text: #ffffff;
-	--color-black: 000;	/* White */
+    --color-text: 000;
+	--color-black: 000;	/* White */
+	--color-primary-opaque: #5d013b7d;
 }
 
 body {
@@ -19,37 +20,68 @@ body {
     margin: 0;
     padding: 0;
     height: auto;
-    background-image: url('parchment-bg.png');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: cover;
+    background-color: var(--color-secondary);
+}
+
+.eagle-lake-regular {
+  font-family: "Eagle Lake", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 #header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: var(--color-primary);
+    //background-color: #5d013ba8;
+	background: linear-gradient(to right, var(--color-primary-opaque), rgba(255, 0, 0, 0));
     color: var(--color-text);
-    text-align: center;
+    text-align: left;
     padding: 10px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+   box-shadow: 0 2px 50px rgba(0, 0, 0, 0.3) !important;
     z-index: 1000; /* Ensure the header is always on top */
+	 font-family: "Eagle Lake", serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size:2em;
+  padding-left:100px;
+  
+	
+}
+
+/* Video Background Styling */
+#backgroundVideo {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    z-index: -1;
+    transform: translate(-50%, -50%);
+    background-size: cover;
 }
 
 .header-bar {
-    text-align: center;
+    //text-align: center;
+    
 }
 
 .statsTable {
-    float: right;
-    display: inline-block;
-    margin: 12px;
+    //float: right;
+    //display: inline-block;
+    //margin: 12px;
+	position: fixed;
+	bottom: 0px;
+	left: 0px
+	z-index: 1000;
 }
 
 .statsTable table {
     width: 100%;
     border-collapse: collapse;
+	//margin: 20px;
 }
 
 .statsTable th, .statsTable td {
@@ -59,27 +91,37 @@ body {
 }
 
 #contentWrapper {
-    margin-top: 120px; /* Adjusted to ensure content starts below the header */
+    margin-top: 210px; /* Adjusted to ensure content starts below the header */
     padding: 20px;
 }
 
 #statsContainer {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    text-align: right;
+  // position: absolute;
+   // top: 10px;
+   // right: 10px;
+   // text-align: right;
+  
 }
 
 #storyContainer {
     width: 80%;
     margin: 20px auto;
     padding: 20px;
-    background: var(--color-background);
+    background-image: url('parchment-bg.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
     border: 2px solid var(--color-text);
     border-radius: 10px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     position: relative;
     z-index: 1; /* Ensure the container is above other elements */
+	font-weight: bold;
+	font-size: 18px;
+	//position: absolute;
+   // top: 50%;
+   // left: 50%;
+   // transform: translate(-50%, -50%);
 }
 
 .inputContainer {
@@ -154,7 +196,7 @@ textarea#userInput {
 .fantasy-textarea {
     font-family: 'Cinzel', serif; /* Use a fantasy-like font */
     font-size: 14px;
-    color: var(--color-text);
+    color: var(--color-black);
     background-size: cover;
     border: 2px solid var(--color-text);
     border-radius: 10px;
@@ -227,9 +269,14 @@ button:hover:not(:disabled) {
 }
 
 #purgeButton, #startNewStoryButton, #showFullStoryButton {
-    float: right;
+    //float: right;
     margin-left: 5px;
     position: relative; /* Added to position tooltip correctly */
+	
+}
+.buttonContainer{
+	margin: 20px auto;
+	width: 80%;
 }
 
 /* Tooltip text */
@@ -264,18 +311,25 @@ button:hover:not(:disabled) {
 /* Responsive Design */
 @media (max-width: 768px) {
     #storyContainer {
-        width: 95%;
+        width: 90%;
+		font-size:16px;
     }
 
     .statsTable {
-        float: none;
-        margin: 0 auto;
-        width: 100%;
+      display:none;
+	  // float: none;
+        //margin: 20px;
+        //width: 100%;
     }
 
     .statsTable table {
         width: 100%;
+		//margin: 20px;
     }
+
+#header {
+	padding-left: 24px;
+}
 
     #header h1 {
         font-size: 1.5rem;
@@ -302,4 +356,12 @@ button:hover:not(:disabled) {
         margin-right: 0;
         margin-bottom: 10px;
     }
+	
+	#contentWrapper {
+		margin-top:100px;
+	}
+	
+	.buttonContainer {
+		display: inline-block;
+	}
 }
