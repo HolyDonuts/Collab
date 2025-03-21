@@ -34,19 +34,38 @@ body {
     top: 0;
     width: 100%;
     //background-color: #5d013ba8;
-	background: linear-gradient(to right, var(--color-primary-opaque), rgba(255, 0, 0, 0));
+	//background: linear-gradient(to right, var(--color-primary-opaque), #5d013b05),
+	 linear-gradient(to bottom, var(--color-primary-opaque), #5d013b05);
     color: var(--color-text);
     text-align: left;
     padding: 10px 0;
-   box-shadow: 0 2px 50px rgba(0, 0, 0, 0.3) !important;
+   //box-shadow: 0 2px 50px rgba(0, 0, 0, 0.3) !important;
     z-index: 1000; /* Ensure the header is always on top */
 	 font-family: "Eagle Lake", serif;
   font-weight: 400;
   font-style: normal;
-  font-size:2em;
-  padding-left:100px;
+  font-size:3em;
+  padding-left:170px;
   
 	
+}
+#header h1 {
+    display: inline-block;
+    background: linear-gradient(120deg, #ffffff, #ffeb99, #ffffff, #ffeb99, #ffffff);
+    background-size: 500%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 25s linear infinite;
+}
+
+/* Shimmering Fairy Dust Effect */
+@keyframes shimmer {
+    0% {
+        background-position: -500%;
+    }
+    100% {
+        background-position: 500%;
+    }
 }
 
 /* Video Background Styling */
@@ -231,6 +250,7 @@ button:hover:not(:disabled) {
     justify-content: center;
     align-items: center;
     margin-bottom: 5px;
+	margin-top:86px;
 }
 
 #username {
@@ -241,6 +261,7 @@ button:hover:not(:disabled) {
     background-color: var(--color-background);
     border: 2px solid var(--color-text);
     border-radius: 5px;
+	
 }
 
 #userCounter,
@@ -332,11 +353,13 @@ button:hover:not(:disabled) {
     }
 
 #header {
-	padding-left: 24px;
+	padding: 10px;
+	text-align: center;
 }
 
     #header h1 {
-        font-size: 1.5rem;
+       font-size: 3rem;
+	   //align-items: center;
     }
 
     .fantasy-button {
@@ -359,6 +382,7 @@ button:hover:not(:disabled) {
     #username {
         margin-right: 0;
         margin-bottom: 10px;
+		margin-top:40px;
     }
 	
 	#contentWrapper {
